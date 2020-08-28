@@ -1,0 +1,71 @@
+﻿@model IEnumerable<NewStoreSA.Models.Productos>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Productos</h2>
+
+<button class="btn btn-dark">
+    @Html.ActionLink("Crear nuevo producto", "Agregar")
+</button>
+
+<table class="table">
+    <tr>
+        <th>
+            No. de Producto
+        </th>
+        <th>
+            Código de Barra
+        </th>
+        <th>
+            Descripción
+        </th>
+        <th>
+            Cantidad
+        </th>
+        <th>
+            Precio
+        </th>
+        <th>
+            Precio de Venta 1
+        </th>
+        <th>
+            Precio de Venta 2
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.c_barras)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cantidad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.precio_costo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.precio_venta1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.precio_venta2)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
